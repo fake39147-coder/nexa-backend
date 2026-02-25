@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXA Offline</title>
+<style>
+body { font-family: Arial; background:#f4f6f9; margin:0; padding:20px; }
+#login, #app { max-width:500px; margin:auto; }
+#chat { height:300px; overflow:auto; background:white; padding:10px; border-radius:10px; margin-bottom:10px; }
+input { width:75%; padding:10px; }
+button { padding:10px; }
+</style>
+</head>
+<body>
+
+<div id="login">
+<h2>NEXA</h2>
+<input type="password" id="pw" placeholder="Enter Password">
+<button onclick="login()">Enter</button>
+</div>
+
+<div id="app" style="display:none;">
+<h2>NEXA</h2>
+<div id="chat"></div>
+<input id="msg" placeholder="Mulai cerita fantasi...">
+<button onclick="send()">Kirim</button>
+</div>
+
+<script>
+if(localStorage.getItem("chat")){
+document.getElementById("chat").innerHTML = localStorage.getItem("chat");
+}
+
+function login(){
+if(document.getElementById("pw").value === "nexageneration"){
+document.getElementById("login").style.display="none";
+document.getElementById("app").style.display="block";
+}
+}
+
+function send(){
+let msg = document.getElementById("msg").value;
+let chat = document.getElementById("chat");
+
+// Tampilkan pesan user
+chat.innerHTML += "<p><b>Kamu:</b> "+msg+"</p>";
+
+// NEXA offline bikin balasan sederhana
+let reply = "NEXA: Cerita fantasi sedang dibangun... " + msg;
+chat.innerHTML += "<p><b>NEXA:</b> "+reply+"</p>";
+
+// Simpan chat ke localStorage
+localStorage.setItem("chat", chat.innerHTML);
+
+// Reset input
+document.getElementById("msg").value="";
+chat.scrollTop = chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
