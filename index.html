@@ -27,8 +27,13 @@ button { padding:10px; }
 </div>
 
 <script>
-// URL backend NEXA AI
-const backend="https://nexa-backend-production.up.railway.app/chat";
+// -------------------
+// GANTI DI SINI
+// -------------------
+// URL backend NEXA AI (Live URL dari Railway / Render)
+const backend = "https://nexa-backend-production.up.railway.app/chat"; 
+// ganti URL ini sesuai backend kamu
+
 // Load chat terakhir
 if(localStorage.getItem("chat")){
 document.getElementById("chat").innerHTML = localStorage.getItem("chat");
